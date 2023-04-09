@@ -1,0 +1,67 @@
+        body {
+
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* 배경화면 뿌옇게 만들기 */
+        body::after {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            min-height: 100vh;
+            background-color: rgb(40, 40, 40);
+            opacity: 0.8;
+            content: "";
+            display: block;
+        }
+
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: 70px auto;
+        }
+
+        .box {
+            border-radius: 46px;
+            width: 60%;
+            height: 80%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9;
+
+            /* background-image: url("https://apod.nasa.gov/apod/image/2103/M64_Hubble_960.jpg"); */
+            background-size: cover;
+            /* 지연속도 이벤트 */
+            transition: all 0.5s ease-out;
+
+        }
+
+        .box:hover {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            /* opacity: 0.8; */
+            cursor: pointer;
+        }
+
+        .title {
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+
+        .hidden {
+            /* 회전 */
+            transform: rotate(30deg);
+            opacity: 0.9;
+            /* 안보이게 하기 */
+            visibility: hidden;
+        }

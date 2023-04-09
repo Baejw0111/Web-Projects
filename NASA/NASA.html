@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--
+            데이터와 HTML 일치화
+            HTML 태그를 데이터 없이 만들어보고
+            그 후에 반복이 될 부분을 함수로 묶는다.
+        -->
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const api_key = "VDcOarEhegalgvdquGbmxE7XD38fRPxcTqDWi3Pl";
+        const url = `https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=10`;
+
+        // https://apod.nasa.gov/apod/image/iofullface_gal_big.jpg
+        // https://apod.nasa.gov/apod/image/0403/wildcomp_stardust_a.jpg
+
+        async function getNASA() {
+            const result = await axios.get(url);
+            console.log(result);
+
+            /*
+            첫번째 배열의 이미지를 전체 배경화면으로 정하기
+            result.data[0].hdurl
+            body에 해당 url 적용
+            */
+
+            document.querySelector('body').style.backgroundImage = `url(${result.data[0].url})`;
+
+            // 이미지 mapping 작업
+            const components = result.data.reduce((acc, cur) => {
+                // cur.url
+                // cur.title
+
+                acc = acc + imageComponent(cur.url, cur.title);
+
+                return acc;
+            }, "")
+            console.log(components);
+
+            // container에 tag 넣기
+            document.querySelector('.container').insertAdjacentHTML('beforeend', components);
+
+            // hidden 이벤트 부여
+            const allBox = document.querySelectorAll('.box');
+            allBox.forEach(li => li.addEventListener('click', function (e) {
+                // 클릭할 때마다 현재 선택된 이벤트 객체의 class에 hidden을 추가
+                e.target.classList.add('hidden');
+            }))
+        }
+        getNASA();
+
+        // 반복되는 부분 처리할 함수
+        function imageComponent(url, title) {
+            return `
+            <div class="box" style="background-image: url('${url}');">
+                <div class="title">
+                    ${title}
+                </div>
+            </div>
+             
+            `
+        }
+    </script>
+</body>
+
+</html>

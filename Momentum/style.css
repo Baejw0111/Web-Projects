@@ -1,0 +1,65 @@
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-container {
+    /* 브라우저에 꽉 차게 함 */
+    min-height: 100vh;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.timer {
+    font-weight: 500;
+    font-size: 168px;
+    line-height: 168px;
+}
+
+.timer-content {
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+
+.memo-wrapper {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.memo {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-button{
+    position: fixed;
+    right: 40px;
+    top: 40px;
+    width: 100px;
+    height: 100px;
+    background-image: url("./images/001-cloud.png");
+    cursor: pointer;
+    background-size: cover;
+}
+
+.modal-dialog{
+    display: flex;
+    justify-content: space-around
+}
+
+.weather-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 50px;
+}
